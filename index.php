@@ -4,7 +4,35 @@ $dbname = 'd4m7b5v2sg6snc';
 $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-$result = $connection->query("SELECT * FROM appointments");
-if($result !== null) {
-echo $result->rowCount();
-}
+// $result = $connection->query("SELECT * FROM appointments");
+$resul = "SELECT * FROM `appointments`"; //แสดงข้อมูชโครงการที่เสนอ
+    $objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
+// if($result !== null) {
+// echo $result->rowCount();
+// 
+?>
+<table class="table table-striped">
+      <tr>
+        <th style="width: 30px">#</th>
+        <th style="width: 100px">ชื่อหัวข้อโครงการ</th>
+        <th style="width: 60px"></th>
+        <th style="width: 60px">กำหนดสอบ</th>
+      </tr>
+      <?php 
+      $count = 0;
+      while($rows=mysqli_fetch_assoc($objselect)){ 
+        $count++;
+        ?>
+      <tr>
+        <td><?php echo $count ?>.</td>
+        <td><?php echo $rows['id']; ?></td>
+        <td><?php echo $rows['time']; ?></td>
+        <td><?php echo $rows['content']; ?></td>
+      </tr>
+      <?php } ?>  
+      <?php if($count ==0 ){ ?>
+        <tr>
+          <td colspan="6" align="center" class="mailbox-star">ไม่พบข้อมูล</td>
+        </tr>
+      <?php } ?>     
+    </table>
