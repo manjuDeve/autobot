@@ -12,6 +12,8 @@ $channel_secret = '2fbf6e976b55aea18895561298516965';
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
+
+
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
@@ -34,5 +36,16 @@ if (!is_null($events['events'])) {
     $textMessageBuilder = new TextMessageBuilder($respMessage);
     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
     }
+}
+
+if (!is_null($events['events'])) {
+    // Loop through each event
+    foreach ($events['events'] as $event) {
+        // LINE API send a lot of event type, we interested in message only.
+        if ($event['type'] == 'unfollow') {
+        // ไม่รู้จะท ำอะไรต่อ เพรำะว่ำยูสเซอร์อันเฟรนบอทไปแล้ว
+        // บำงทีอำจจะแค่นับจ ำนวนคนอันเฟรนบอท แล้วบอกจ ำนวนให้กำรตลำดทรำบ
+        }
     }
+}
     echo "OK";
