@@ -12,29 +12,37 @@ $channel_secret = '2fbf6e976b55aea18895561298516965';
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
-
-
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
-    // Get replyToken
-    $replyToken = $event['replyToken'];
-    $ask = $event['message']['text'];
-    switch(strtolower($ask)) {
-    case 'm':
-    $respMessage = 'What sup man. Go away!';
-    break;
-    case 'f':
-    $respMessage = 'Love you lady.';
-    break;
-    default:
-    $respMessage = 'What is your sex? M or F';
-    break;
-    }
-    $httpClient = new CurlHTTPClient($channel_token);
-    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-    $textMessageBuilder = new TextMessageBuilder($respMessage);
-    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+        // Line API send a lot of event type, we interested in message only.
+        if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+            // Get replyToken
+            $replyToken = $event['replyToken'];
+            // Split message then keep it in database.
+            $appointments = explode(',', $event['message']['text']);
+            if(count($appointments) == 2) {
+                $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+                $dbname = 'd4m7b5v2sg6snc';
+                $user = 'jkgdpocorcqmzk';
+                $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+                $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+                $result = $connection->query("SELECT * FROM appointments ORDER BY id");
+                $params = array(
+                    'time' => $appointments[0],
+                    'content' => $appointments[1],
+                );
+                $statement = $connection->prepare("INSERT INTO appointments (time, content) VALUES (:time,:content)");
+                $result = $statement->execute($params);
+                $respMessage = 'Your appointment has saved.';
+            }else{
+                $respMessage = 'You can send appointment like this "12.00,House keeping." ';
+            }
+                $httpClient = new CurlHTTPClient($channel_token);
+                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                $textMessageBuilder = new TextMessageBuilder($respMessage);
+                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+        }
     }
 }
 
@@ -48,4 +56,4 @@ if (!is_null($events['events'])) {
         }
     }
 }
-    echo "OK";
+echo "OK";
