@@ -7,7 +7,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 $resul = $connection->query("SELECT * FROM appointments  WHERE id='5' ");
 
 if($resul !== null) {
-echo $result->rowCount();
+// echo $result->rowCount();
 echo "hh";
     while($row = $resul->fetch_assoc()) {
         echo "id: " . $row['id']. " - Name: " . $row['time']. " " . $row['content']. "<br>";
