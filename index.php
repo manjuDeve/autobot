@@ -7,11 +7,11 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 $result = $connection->query("SELECT * FROM appointments");
 // $resul = "SELECT * FROM appointments "; //แสดงข้อมูชโครงการที่เสนอ
 // $objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
-// if($result !== null) {
-// echo $result->rowCount();
-// 
+if($result !== null) {
+echo $result->rowCount();
+}
 ?>
-<table class="table table-striped">
+    <table class="table table-striped">
       <tr>
         <th style="width: 30px">#</th>
         <th style="width: 100px">ชื่อหัวข้อโครงการ</th>
