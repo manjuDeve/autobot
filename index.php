@@ -14,27 +14,4 @@ echo $result->rowCount();
     // }
 }
 ?>
-    <!-- <table class="table table-striped">
-      <tr>
-        <th style="width: 30px">#</th>
-        <th style="width: 100px">ชื่อหัวข้อโครงการ</th>
-        <th style="width: 60px"></th>
-        <th style="width: 60px">กำหนดสอบ</th>
-      </tr>
-      <?php 
-      $count = 0;
-      while($rows=$result->fetch_assoc()){ 
-        $count++;
-        ?>
-      <tr>
-        <td><?php echo $rows['id']; ?></td>
-        <td><?php echo $rows['time']; ?></td>
-        <td><?php echo $rows['content']; ?></td>
-      </tr>
-      <?php } ?>  
-      <?php if($count ==0 ){ ?>
-        <tr>
-          <td colspan="6" align="center" class="mailbox-star">ไม่พบข้อมูล</td>
-        </tr>
-      <?php } ?>     
-    </table> -->
+  
