@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <table>
-        <tr>
-            <td>dddd </td>
-            <td>ddd </td>
-        </tr>
-    </table>
-</body>
-</html>
+<?php
+$host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+$dbname = 'd4m7b5v2sg6snc';
+$user = 'jkgdpocorcqmzk';
+$pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+$result = $connection->query("SELECT * FROM polls");
+if($result !== null) {
+echo $result->rowCount();
+}
