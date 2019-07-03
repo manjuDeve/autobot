@@ -5,8 +5,8 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 // $result = $connection->query("SELECT * FROM appointments");
-$resul = "SELECT * FROM `appointments`"; //แสดงข้อมูชโครงการที่เสนอ
-    $objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
+$resul = "SELECT * FROM appointments "; //แสดงข้อมูชโครงการที่เสนอ
+$objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
 // if($result !== null) {
 // echo $result->rowCount();
 // 
