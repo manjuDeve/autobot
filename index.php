@@ -8,7 +8,7 @@ $result = $connection->query("SELECT * FROM appointments");
 // $resul = "SELECT * FROM appointments "; //แสดงข้อมูชโครงการที่เสนอ
 // $objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
 if($result !== null) {
-echo $result->fetch_assoc();
+echo $result->rowCount();
 }
 ?>
     <table class="table table-striped">
