@@ -7,14 +7,14 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
 $sql = "SELECT id, time FROM appointments";
 $result = $connection->query($sql);
-
+echo $result->rowCount();
 if ($result->num_rows > 0) {
     // output data of each row
-    echo $result->rowCount();
     while($row = $result->fetch_assoc()) {
         echo "id: " . $row["id"]. " - Name: " . $row["time"]. "<br>";
     }
 } else {
+    echo $result->rowCount();
     echo "0 results";
 }
 $connection->close();
