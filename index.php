@@ -10,6 +10,7 @@ $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
+    echo $result->rowCount();
     while($row = $result->fetch_assoc()) {
         echo "id: " . $row["id"]. " - Name: " . $row["time"]. "<br>";
     }
