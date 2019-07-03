@@ -20,7 +20,7 @@ echo $result->rowCount();
       </tr>
       <?php 
       $count = 0;
-      while($rows=mysqli_fetch_assoc($result)){ 
+      while($rows=$result->fetch_assoc()){ 
         $count++;
         ?>
       <tr>
