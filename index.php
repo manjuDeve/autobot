@@ -10,5 +10,5 @@ if($result !== null) {
 echo $result->rowCount();
 }
     while($row = $result->fetch()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        echo "id: " . $row["id"]. " - Name: " . $row["time"]. " " . $row["content"]. "<br>";
     }
