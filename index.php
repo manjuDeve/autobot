@@ -5,18 +5,8 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
-$sql = "SELECT id, time FROM appointments";
-$result = $connection->query($sql);
-echo $result->rowCount();
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "id: " . $row["id"]. " - Name: " . $row["time"]. "<br>";
-    }
-} else {
-    echo $result->rowCount();
-    echo "0 results";
+$stmt = $connection->query("SELECT * FROM appointments");
+while ($row = $stmt->fetch()) {
+    echo $row['id']."<br />\n";
 }
-$connection->close();
-
 ?>
