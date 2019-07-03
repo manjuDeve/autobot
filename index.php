@@ -9,9 +9,12 @@ $result = $connection->query("SELECT * FROM appointments");
 // $objselect= mysqli_query($connection,$resul) or die("Error Query [" . $resul . "]");
 if($result !== null) {
 echo $result->rowCount();
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["id"]. " - Name: " . $row["time"]. " " . $row["content"]. "<br>";
+    }
 }
 ?>
-    <table class="table table-striped">
+    <!-- <table class="table table-striped">
       <tr>
         <th style="width: 30px">#</th>
         <th style="width: 100px">ชื่อหัวข้อโครงการ</th>
@@ -34,4 +37,4 @@ echo $result->rowCount();
           <td colspan="6" align="center" class="mailbox-star">ไม่พบข้อมูล</td>
         </tr>
       <?php } ?>     
-    </table>
+    </table> -->
