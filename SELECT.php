@@ -8,3 +8,4 @@ $result = $connection->query("SELECT * FROM appointments");
 if($result !== null) {
 echo $result->rowCount();
 }
+echo 'fffff';
