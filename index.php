@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
-                    $result = $connection->query("SELECT * FROM appointments WHERE time LIKE '%".$mssql."%' ");
+                    $result = $connection->query("SELECT * FROM tb_laws WHERE Charge LIKE '%".$mssql."%' ");
                     // error_log($result);
                     // Get replyToken
                     $replyToken = $event['replyToken'];
@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
                     $count = 0;
                     while($row = $result->fetch()) {
                         $count++;
-                        $respMessage .= "ข้อมูล: " . $row["time"]."". $row["content"]."\n";
+                        $respMessage .= "มาตาร : " . $row["section"]." ข้อหา". $row["Charge"]." บทลงโทษ". $row["Blame"]."\n";
                     }
                     if($count == 0 ){
                         $respMessage = "ไม่พบข้อมูล2";
