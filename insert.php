@@ -6,15 +6,15 @@ $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
     $sql = "SELECT MAX(id) AS MCODE FROM appointments";
-    $qry = mysqli_query($conn,$sql) or die(mysqli_error());
+    $qry = mysqli_query($connection,$sql) or die(mysqli_error());
     $rs = mysqli_fetch_assoc($qry);
     $maxId = substr($rs['MCODE'], -7);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
     $maxId = ($maxId + 1); 
     $maxId = substr("0000000".$maxId, -7);
 
-$sec=$_POST[''];
-$chge=$_POST[''];
-$bla=$_POST[''];
+    $sec=$_POST['sec'];
+    $chge=$_POST['chge'];
+    $bla=$_POST['bla'];
 
     $statement = $connection->prepare("INSERT INTO appointments(id, sec, chge, bla)VALUES ('$maxI','$sec','$chge','$bla')");
     $statement->execute($params);
@@ -38,7 +38,7 @@ $bla=$_POST[''];
   </div>
 </nav>
 <br>
-<form>
+<form action="insert.php" enctype="multipart/form-data" method="post">
   <div class="form-group">
     <label for="exampleFormControlInput1">มาตรา</label>
     <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
