@@ -14,10 +14,10 @@ $bla=$_POST['bla'];
         'surname' => $chge,
         'sex' => $bla,
     ];
-    $sql = "INSERT INTO users (sec, chge, bla) VALUES (:name, :surname, :sex)";
+    $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :surname, :sex)";
     $stmt= $connection->prepare($sql);
     $stmt->execute($data);
-
+    echo $stmt;   
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
