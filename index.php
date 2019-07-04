@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
                     $count = 0;
                     while($row = $result->fetch()) {
                         $count++;
-                        $respMessage .= "ข้อมูล: " . $row["time"]."". $row["content"]."/n";
+                        $respMessage .= "ข้อมูล: " . $row["time"]."". $row["content"]."\n";
                     }
                     if($count == 0 ){
                         $respMessage = "ไม่พบข้อมูล2";
