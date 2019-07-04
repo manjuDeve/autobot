@@ -6,7 +6,7 @@ use \LINE\LINEBot;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
 $channel_token ='el8BPlEY6Cf60LnRo7mwRrdnGUT8WqsZQ03H2zdL1Xx6iGWewgjyyOhsa8Aquztz903qfCobddaA3tsmUoOySZaJ2S9VzDMgbJGsfMsGyE7OzFXxyrHPDpeawCape4Ds5VqLlkVVINwQVdIBGpt+YwdB04t89/1O/w1cDnyilFU=';
-$channel_secret = '2fbf6e976b55aea18895561298516965';
+$channel_secret ='2fbf6e976b55aea18895561298516965';
 
 // Get message from Line API
 $content = file_get_contents('php://input');
@@ -24,12 +24,12 @@ if (!is_null($events['events'])) {
                     $user = 'jkgdpocorcqmzk';
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-                    $result = $connection->query("SELECT * FROM appointments ORDER BY id");
+                    $result = $connection->query("SELECT * FROM appointments WHERE time='".$event['message']['type']."' ");
                     // Get replyToken
                     $replyToken = $event['replyToken'];
                     // Reply message
                     while($row = $result->fetch()) {
-                        $respMessage = "ข้อมูล: " . $row["time"]. $row["content"];
+                        $respMessage = "ข้อมูล: " . $row["time"]."". $row["content"];
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
