@@ -43,7 +43,7 @@ $bla=$_POST['bla'];
         <div class="col-md-3">
             <div class="form-group">
                 <label for="exampleFormControlInput1">มาตรา</label>
-                <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
+                <input type="text" class="form-control" id="sec" name="sec" placeholder="มาตรา">
             </div>
         </div>
     </div>
