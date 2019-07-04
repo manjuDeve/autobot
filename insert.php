@@ -11,10 +11,10 @@ $chge=$_POST['chge'];
 $bla=$_POST['bla'];
     $data = [
         'name' => $name,
-        'surname' => $chge,
-        'sex' => $bla,
+        'chge' => $chge,
+        'bla' => $bla,
     ];
-    $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :surname, :sex)";
+    $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
     $stmt= $connection->prepare($sql);
     $stmt->execute($data);
     echo $stmt;   
