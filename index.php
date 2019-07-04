@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
-                    $result = $connection->query("SELECT * FROM tb_laws WHERE Charge LIKE '%".$mssql."%' ");
+                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' ");
                     // error_log($result);
                     // Get replyToken
                     $replyToken = $event['replyToken'];
@@ -33,10 +33,10 @@ if (!is_null($events['events'])) {
                     $count = 0;
                     while($row = $result->fetch()) {
                         $count++;
-                        $respMessage .= "ข้อมูล: " . $row["section"]."". $row["Charge"]."\n";
+                        $respMessage .= "ข้อมูล: " . $row["sec"]."". $row["chge"]."\n";
                     }
                     if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล1";
+                        $respMessage = "ไม่พบข้อมูล2";
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
