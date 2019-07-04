@@ -6,14 +6,14 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
-$name=$_POST['sec'];
-$chge=$_POST['chge'];
-$bla=$_POST['bla'];
+$name=$_GET['sec'];
+$chge=$_GET['chge'];
+$bla=$_GET['bla'];
 
 $params = array(
-    'user_id' => $name,
-    'slip_date' =>$chge,
-    'name' =>$bla,
+    'user_id' => 'สมพงษ์',
+    'slip_date' =>'vkpi',
+    'name' =>'581413046',
     );
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
@@ -36,7 +36,7 @@ $params = array(
   </div>
 </nav>
 <br>
-<form action="insert.php" enctype="multipart/form-data" method="post">
+<form action="insert.php" enctype="multipart/form-data" method="get">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-3">
