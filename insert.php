@@ -9,7 +9,9 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 $name=$_POST['sec'];
 $chge=$_POST['chge'];
 $bla=$_POST['bla'];
-
+alert($name);
+alert($chge);
+alert($bla);
 $params = array(
     'user_id' => $name,
     'slip_date' =>$chge,
