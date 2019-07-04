@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
                         $respMessage .= "มาตาร : " . $row["section"]." ข้อหา". $row["Charge"]." บทลงโทษ". $row["Blame"]."\n";
                     }
                     if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล2";
+                        $respMessage = "ไม่พบข้อมูล";
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
