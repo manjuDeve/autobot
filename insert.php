@@ -10,6 +10,7 @@ $name=$_POST['sec'];
 $chge=$_POST['chge'];
 $bla=$_POST['bla'];
 $submit=$_POST['submit'];
+alert('สวัสดี'); 
     if($submit == 'submit'){
         $data = [
             'name' => $name,
@@ -18,7 +19,7 @@ $submit=$_POST['submit'];
         ];
         $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
         $connection->prepare($sql)->execute($data);
-        echo $stmt; 
+        alert($stmt); 
     } 
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
