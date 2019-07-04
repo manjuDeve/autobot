@@ -10,17 +10,15 @@ $name=$_POST['sec'];
 $chge=$_POST['chge'];
 $bla=$_POST['bla'];
 $submit=$_POST['submit'];
-alert('สวัสดี'); 
-    if($submit == 'submit'){
-        $data = [
-            'name1' => $name,
-            'chge' => $chge,
-            'bla' => $bla,
-        ];
-        $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name1, :chge, :bla)";
-        $stmt = $connection->prepare($sql);
-        $stmt->execute($data); 
-    } 
+    $data = [
+        'name' => $name,
+        'chge' => $chge,
+        'bla' => $bla,
+    ];
+    $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
+    $stmt= $connection->prepare($sql);
+    $stmt->execute($data);
+    echo $stmt;   
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
