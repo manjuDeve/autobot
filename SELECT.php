@@ -11,10 +11,6 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
         <th >#</th>
         <th >ชื่อหัวข้อโครงการ</th>
         <th ></th>
-        <?php if($data['id_Schedule'] != ''){ ?>
-        <th >กำหนดสอบ</th>
-        <th >ผลการอนุมัติ</th>
-        <?php }?>
       </tr>
       <?php 
       $count = 0;
@@ -23,14 +19,9 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
         ?>
       <tr>
         <td><?php echo $count ?>.</td>
-        <td><?php echo $rows['sec']; ?></td>
-        <td><?php echo $rows['chge']; ?></td>
-        <td><?php echo $rows['bla']; ?></td>
+        <td><?php echo $row['sec']; ?></td>
+        <td><?php echo $row['chge']; ?></td>
+        <td><?php echo $row['bla']; ?></td>
       </tr>
-      <?php } ?>  
-      <?php if($count ==0 ){ ?>
-        <tr>
-          <td colspan="6" align="center" class="mailbox-star">ไม่พบข้อมูล</td>
-        </tr>
-      <?php } ?>     
+      <?php } ?>      
     </table>
