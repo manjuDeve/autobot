@@ -28,9 +28,9 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col" style="width: 100px">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col" style="width: 100px">มาตรา</th>
+      <th scope="col">ข้อหา</th>
+      <th scope="col">บทลงโทษ</th>
     </tr>
   </thead>
   <tbody>

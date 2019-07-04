@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">ข้อหา</label>
                 <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
@@ -37,7 +37,7 @@
     </div>
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">ข้อหา</label>
                 <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
