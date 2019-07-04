@@ -6,6 +6,18 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
+$name=$_POST['sec'];
+$chge=$_POST['chge'];
+$bla=$_POST['bla'];
+    $data = [
+        'name' => $name,
+        'surname' => $chge,
+        'sex' => $bla,
+    ];
+    $sql = "INSERT INTO users (sec, chge, bla) VALUES (:name, :surname, :sex)";
+    $stmt= $connection->prepare($sql);
+    $stmt->execute($data);
+
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -53,7 +65,15 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
             </div>
         </div>
     </div>
-</form>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <button name="submit" type="submit" id="submit" class="btn btn-info pull-right">บันทึกข้อมูล</button>
+            </div>
+        </div>
+    </div>
+</form> 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
