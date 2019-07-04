@@ -37,6 +37,10 @@ if (!is_null($events['events'])) {
                     if($count == 0 ){
                         $respMessage = "ไม่พบข้อมูล2";
                     }
+                    $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
 
                 case 'image':
@@ -45,6 +49,10 @@ if (!is_null($events['events'])) {
                 break;
                 default:
                 $respMessage = 'Please send image only';
+                $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
            
                 case 'sticker':
@@ -55,12 +63,12 @@ if (!is_null($events['events'])) {
                 default:
                 // Reply message
                 $respMessage = 'Please send Sticker only';
+                $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
             }
-            $httpClient = new CurlHTTPClient($channel_token);
-            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-            $textMessageBuilder = new TextMessageBuilder($respMessage);
-            $response = $bot->replyMessage($replyToken, $textMessageBuilder);
         }
 
     }
