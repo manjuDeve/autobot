@@ -10,9 +10,9 @@ $name=$_POST['sec'];
 $chge=$_POST['chge'];
 $bla=$_POST['bla'];
     $data = [
-        'name' => $name,
-        'surname' => $chge,
-        'sex' => $bla,
+        'name' => '5',
+        'surname' => '44',
+        'sex' => '5',
     ];
     $sql = "INSERT INTO users (sec, chge, bla) VALUES (:name, :surname, :sex)";
     $stmt = $connection->prepare($sql);
