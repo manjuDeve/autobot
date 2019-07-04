@@ -37,6 +37,8 @@ $params = array(
 </nav>
 <br>
 <form action="insert.php" enctype="multipart/form-data" method="post">
+<script>alert(555);</script>
+<script>alert('<?php $_POST['sec'] ?>');</script>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-3">
