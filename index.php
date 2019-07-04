@@ -34,7 +34,7 @@ if (!is_null($events['events'])) {
                         $respMessage = "ข้อมูล: " . $row["time"]."". $row["content"];
                     }
                     if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล";
+                        $respMessage = "ไม่พบข้อมูล55";
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
