@@ -13,13 +13,13 @@ $submit=$_POST['submit'];
 alert('สวัสดี'); 
     if($submit == 'submit'){
         $data = [
-            'name' => $name,
+            'name1' => $name,
             'chge' => $chge,
             'bla' => $bla,
         ];
-        $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
-        $connection->prepare($sql)->execute($data);
-        alert($stmt); 
+        $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name1, :chge, :bla)";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute($data); 
     } 
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
