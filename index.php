@@ -33,10 +33,10 @@ if (!is_null($events['events'])) {
                     $count = 0;
                     while($row = $result->fetch()) {
                         $count++;
-                        $respMessage .= "ข้อมูล: " . $row["time"]."". $row["content"];
+                        $respMessage .= "ข้อมูล: " . $row["time"]."". $row["content"]."/n";
                     }
                     if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล1";
+                        $respMessage = "ไม่พบข้อมูล2";
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
