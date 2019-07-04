@@ -1,11 +1,3 @@
-<?php
-$host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
-$dbname = 'd4m7b5v2sg6snc';
-$user = 'jkgdpocorcqmzk';
-$pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-$result = $connection->query("SELECT * FROM appointments ORDER BY id");
-?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -24,30 +16,20 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
   </div>
 </nav>
 <br>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" style="width: 100px">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-      $count = 0;
-      while($row = $result->fetch()) {
-        $count++;
-    ?>
-    <tr>
-      <th scope="row"><?php echo $count ?>.</th>
-      <td><?php echo $row['sec']; ?></td>
-      <td><?php echo $row['chge']; ?></td>
-      <td><?php echo $row['bla']; ?></td>
-    </tr>
-    <?php } ?>
-  </tbody>
-</table>
+<form action="insert.php" enctype="multipart/form-data" method="post">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">มาตรา</label>
+    <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">ข้อหา</label>
+    <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">บทลงโทษ</label>
+    <textarea class="form-control" id="bla" name="bla" rows="3" placeholder="บทลงโทษ"></textarea>
+  </div>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
