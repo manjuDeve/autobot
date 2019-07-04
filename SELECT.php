@@ -17,18 +17,18 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
     </tr>
   </thead>
   <tbody>
-  <?php 
+    <?php 
       $count = 0;
       while($row = $result->fetch()) {
         $count++;
-        ?>
-      <tr>
-        <td><?php echo $count ?>.</td>
-        <td><?php echo $row['sec']; ?></td>
-        <td><?php echo $row['chge']; ?></td>
-        <td><?php echo $row['bla']; ?></td>
-      </tr>
-      <?php } ?>  
+    ?>
+    <tr>
+      <th scope="row"><?php echo $count ?>.</th>
+      <td><?php echo $row['sec']; ?></td>
+      <td><?php echo $row['chge']; ?></td>
+      <td><?php echo $row['bla']; ?></td>
+    </tr>
+    <?php } ?>
   </tbody>
 </table>
 
