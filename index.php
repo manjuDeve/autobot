@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
     foreach ($events['events'] as $event) {
     // Line API send a lot of event type, we interested in message only.
         if ($event['type'] == 'message') {
-            $replyToken = $event['replyToken'];
+            
             switch($event['message']['type']) {
                 case 'text':
                     $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
@@ -28,6 +28,7 @@ if (!is_null($events['events'])) {
                     $mssql=$event['message']['text'];
                     $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' ");
                     // error_log($result);
+                    $replyToken = $event['replyToken'];
                     // Reply message
                     $count = 0;
                     while($row = $result->fetch()) {
@@ -44,6 +45,7 @@ if (!is_null($events['events'])) {
                 break;
 
                 case 'image':
+                $replyToken = $event['replyToken'];
                 $messageID = $event['message']['id'];
                 $respMessage = 'Hello, your image ID is '. $messageID;
                 break;
@@ -56,6 +58,7 @@ if (!is_null($events['events'])) {
                 break;
            
                 case 'sticker':
+                $replyToken = $event['replyToken'];
                 $messageID = $event['message']['packageId'];
                 // Reply message
                 $respMessage = 'Hello, your Sticker Package ID is '. $messageID;
