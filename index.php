@@ -24,7 +24,8 @@ if (!is_null($events['events'])) {
                     $user = 'jkgdpocorcqmzk';
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-                    $result = $connection->query("SELECT * FROM appointments WHERE time LIKE  '%สม%' ");
+                    $mssql=$event['message']['text'];
+                    $result = $connection->query("SELECT * FROM appointments WHERE time LIKE '%".$mssql."%' ");
                     // error_log($result);
                     // Get replyToken
                     $replyToken = $event['replyToken'];
