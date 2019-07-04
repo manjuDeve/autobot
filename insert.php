@@ -17,18 +17,26 @@
 </nav>
 <br>
 <form action="insert.php" enctype="multipart/form-data" method="post">
-  <div class="form-group">
-    <label for="exampleFormControlInput1">มาตรา</label>
-    <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">ข้อหา</label>
-    <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">บทลงโทษ</label>
-    <textarea class="form-control" id="bla" name="bla" rows="3" placeholder="บทลงโทษ"></textarea>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">มาตรา</label>
+                <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">ข้อหา</label>
+                <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">บทลงโทษ</label>
+                <textarea class="form-control" id="bla" name="bla" rows="3" placeholder="บทลงโทษ"></textarea>
+            </div>
+        </div>
+    </div>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  crossorigin="anonymous"></script>
