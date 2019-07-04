@@ -19,25 +19,25 @@ if (!is_null($events['events'])) {
         if ($event['type'] == 'message') {
             switch($event['message']['type']) {
                 case 'text':
-                    // $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
-                    // $dbname = 'd4m7b5v2sg6snc';
-                    // $user = 'jkgdpocorcqmzk';
-                    // $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-                    // $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-                    // $mssql=$event['message']['text'];
-                    // $result = $connection->query("SELECT * FROM tb_laws WHERE Charge LIKE '%".$mssql."%' ");
+                    $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+                    $dbname = 'd4m7b5v2sg6snc';
+                    $user = 'jkgdpocorcqmzk';
+                    $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+                    $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+                    $mssql=$event['message']['text'];
+                    $result = $connection->query("SELECT * FROM tb_laws WHERE Charge LIKE '%".$mssql."%' ");
                     // error_log($result);
                     // Get replyToken
                     $replyToken = $event['replyToken'];
                     // Reply message
-                    // $count = 0;
-                    // while($row = $result->fetch()) {
-                    //     $count++;
-                    //     $respMessage .= "ข้อมูล: " . $row["section"]."". $row["Charge"]."\n";
-                    // }
-                    // if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล2";
-                    // }
+                    $count = 0;
+                    while($row = $result->fetch()) {
+                        $count++;
+                        $respMessage .= "ข้อมูล: " . $row["section"]."". $row["Charge"]."\n";
+                    }
+                    if($count == 0 ){
+                        $respMessage = "ไม่พบข้อมูล1";
+                    }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
