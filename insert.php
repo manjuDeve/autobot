@@ -10,13 +10,13 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 // $chge=$_GET['chge'];
 // $bla=$_GET['bla'];
 
-$params = array(
-    'user_id' => $_REQUEST['sec'],
-    'slip_date' => $_REQUEST['chge'],
-    'name' => $_REQUEST['bla'],
-    );
-    $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
-    $statement->execute($params);
+// $params = array(
+//     'user_id' => $_REQUEST['sec'],
+//     'slip_date' => $_REQUEST['chge'],
+//     'name' => $_REQUEST['bla'],
+//     );
+//     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
+//     $statement->execute($params);
 ?>
 <!DOCTYPE html>
 <html>
