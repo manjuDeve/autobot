@@ -17,6 +17,7 @@ if (!is_null($events['events'])) {
     foreach ($events['events'] as $event) {
     // Line API send a lot of event type, we interested in message only.
         if ($event['type'] == 'message') {
+            $replyToken = $event['replyToken'];
             switch($event['message']['type']) {
                 case 'text':
                     $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
@@ -27,8 +28,6 @@ if (!is_null($events['events'])) {
                     $mssql=$event['message']['text'];
                     $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' ");
                     // error_log($result);
-                    // Get replyToken
-                    $replyToken = $event['replyToken'];
                     // Reply message
                     $count = 0;
                     while($row = $result->fetch()) {
@@ -38,13 +37,32 @@ if (!is_null($events['events'])) {
                     if($count == 0 ){
                         $respMessage = "ไม่พบข้อมูล2";
                     }
-                    $httpClient = new CurlHTTPClient($channel_token);
-                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-                    $textMessageBuilder = new TextMessageBuilder($respMessage);
-                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                break;
+
+                case 'image':
+                $messageID = $event['message']['id'];
+                $respMessage = 'Hello, your image ID is '. $messageID;
+                break;
+                default:
+                $respMessage = 'Please send image only';
+                break;
+           
+                case 'sticker':
+                $messageID = $event['message']['packageId'];
+                // Reply message
+                $respMessage = 'Hello, your Sticker Package ID is '. $messageID;
+                break;
+                default:
+                // Reply message
+                $respMessage = 'Please send Sticker only';
                 break;
             }
+            $httpClient = new CurlHTTPClient($channel_token);
+            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+            $textMessageBuilder = new TextMessageBuilder($respMessage);
+            $response = $bot->replyMessage($replyToken, $textMessageBuilder);
         }
+
     }
 }    
 
