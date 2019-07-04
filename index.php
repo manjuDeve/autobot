@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
                     $replyToken = $event['replyToken'];
                     // Reply message
                     while($row = $result->fetch()) {
-                        $respMessage = "ข้อมูล: " . $row["time"]. " " . $row["content"]. "<br>";
+                        $respMessage = "ข้อมูล: " . $row["time"]. " " . $row["content"];
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
