@@ -18,7 +18,12 @@ $params = array(
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
 ?>
+<!DOCTYPE html>
+<html>
+
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="https://www.isranews.org/images/2014/isranews/09/05092014002.jpg" width="30" height="30" alt="">
@@ -39,6 +44,7 @@ $params = array(
 <form action="insert.php" enctype="multipart/form-data" method="post">
 <script>alert(555);</script>
 <script>alert('<?php $_POST['sec'] ?>');</script>
+<script>alert('<?php $_GET['id'] ?>');</script>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-3">
@@ -79,3 +85,4 @@ $params = array(
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+</body>
