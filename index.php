@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
-                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' ");
+                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ");
                     // error_log($result);
                     // Get replyToken
                     $replyToken = $event['replyToken'];
