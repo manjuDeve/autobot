@@ -1,14 +1,10 @@
 
 <?php
-$conn = mysqli_connect("ec2-23-21-91-183.compute-1.amazonaws.com","jkgdpocorcqmzk","d41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637") or die("Couldn't connect to database");
-mysqli_select_db($conn ,"d4m7b5v2sg6snc") or die("Couldn't find database");
-mysqli_query($conn,"SET NAMES UTF8");
-
-// $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
-// $dbname = 'd4m7b5v2sg6snc';
-// $user = 'jkgdpocorcqmzk';
-// $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-// $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+$host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+$dbname = 'd4m7b5v2sg6snc';
+$user = 'jkgdpocorcqmzk';
+$pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
 $name=$_POST['sec'];
 $chge=$_POST['chge'];
@@ -16,17 +12,14 @@ $bla=$_POST['bla'];
 $submit=$_POST['submit'];
 alert('สวัสดี'); 
     if($submit == 'submit'){
-        alert('สวัสดี'); 
-        $strsave="INSERT INTO `appointments`(`sec`, `chge`, `bla`) VALUES ('$name', '$chge', '$bla')";
-        $objsave=  mysqli_query($conn,$strsave) or die("Error Query [" . $strsave . "]");
-        // $data = [
-        //     'name' => $name,
-        //     'chge' => $chge,
-        //     'bla' => $bla,
-        // ];
-        // $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
-        // $connection->prepare($sql)->execute($data);
-        alert($objsave); 
+        $data = [
+            'name' => $name,
+            'chge' => $chge,
+            'bla' => $bla,
+        ];
+        $sql = "INSERT INTO appointments (sec, chge, bla) VALUES (:name, :chge, :bla)";
+        $connection->prepare($sql)->execute($data);
+        alert($stmt); 
     } 
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
