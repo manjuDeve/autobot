@@ -28,8 +28,13 @@ if (!is_null($events['events'])) {
                     // Get replyToken
                     $replyToken = $event['replyToken'];
                     // Reply message
+                    $count = 0;
                     while($row = $result->fetch()) {
+                        $count++;
                         $respMessage = "ข้อมูล: " . $row["time"]."". $row["content"];
+                    }
+                    if($count == 0 ){
+                        $respMessage = "ไม่พบข้อมูล";
                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
