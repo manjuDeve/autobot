@@ -34,18 +34,21 @@ if (!is_null($events['events'])) {
                     while($row = $result->fetch()) {
                         $count++;
                         $respMessage = "ข้อมูล: " . $row["time"]."". $row["content"];
-                        send($respMessage);
-                    }
-                    if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล5";
-                        send($respMessage);
-                    }
-                    function send($respMessage){
-                    $httpClient = new CurlHTTPClient($channel_token);
+                        $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
                     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                     }
+                    if($count == 0 ){
+                        $respMessage = "ไม่พบข้อมูล5";
+                        $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                    }
+                    
+                   
+                    
                 break;
             }
         }
