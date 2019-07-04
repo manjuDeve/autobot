@@ -5,6 +5,20 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
+    $sql = "SELECT MAX(id) AS MCODE FROM appointments";
+    $qry = mysqli_query($conn,$sql) or die(mysqli_error());
+    $rs = mysqli_fetch_assoc($qry);
+    $maxId = substr($rs['MCODE'], -7);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
+    $maxId = ($maxId + 1); 
+    $maxId = substr("0000000".$maxId, -7);
+
+$sec=$_POST[''];
+$chge=$_POST[''];
+$bla=$_POST[''];
+
+    $statement = $connection->prepare("INSERT INTO appointments(id, sec, chge, bla)VALUES ('$maxI','$sec','$chge','$bla')");
+    $statement->execute($params);
+
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,15 +41,15 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 <form>
   <div class="form-group">
     <label for="exampleFormControlInput1">มาตรา</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="มาตรา">
+    <input type="email" class="form-control" id="sec" name="sec" placeholder="มาตรา">
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">ข้อหา</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="ข้อหา"></textarea>
+    <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">บทลงโทษ</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="บทลงโทษ"></textarea>
+    <textarea class="form-control" id="bla" name="bla" rows="3" placeholder="บทลงโทษ"></textarea>
   </div>
 </form>
 
