@@ -11,9 +11,9 @@ $chge=$_POST['chge'];
 $bla=$_POST['bla'];
 
 $params = array(
-    'user_id' => '4' ,
-    'slip_date' => '4',
-    'name' => '4',
+    'user_id' => $name,
+    'slip_date' =>$chge,
+    'name' =>$bla,
     );
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
