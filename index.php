@@ -19,14 +19,22 @@ if (!is_null($events['events'])) {
         if ($event['type'] == 'message') {
             switch($event['message']['type']) {
                 case 'text':
-                // Get replyToken
-                $replyToken = $event['replyToken'];
-                // Reply message
-                $respMessage = 'สวัสดีนี้คือข้อความที่คุณส่งมา '. $event['message']['text'];
-                $httpClient = new CurlHTTPClient($channel_token);
-                $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-                $textMessageBuilder = new TextMessageBuilder($respMessage);
-                $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                    $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+                    $dbname = 'd4m7b5v2sg6snc';
+                    $user = 'jkgdpocorcqmzk';
+                    $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+                    $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+                    $result = $connection->query("SELECT * FROM appointments ORDER BY id");
+                    // Get replyToken
+                    $replyToken = $event['replyToken'];
+                    // Reply message
+                    if($result !== null) {
+                        $respMessage = 'สวัสดีนี้คือข้อความที่คุณส่งมา '. $event['message']['text'].$result->rowCount();
+                    }
+                    $httpClient = new CurlHTTPClient($channel_token);
+                    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                    $textMessageBuilder = new TextMessageBuilder($respMessage);
+                    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                 break;
             }
         }
