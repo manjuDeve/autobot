@@ -15,7 +15,7 @@ $bla=$_POST['bla'];
         'sex' => $bla,
     ];
     $sql = "INSERT INTO users (sec, chge, bla) VALUES (:name, :surname, :sex)";
-    $stmt= $connection->prepare($sql);
+    $stmt = $connection->prepare($sql);
     $stmt->execute($data);
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
