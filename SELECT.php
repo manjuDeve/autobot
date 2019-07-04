@@ -7,11 +7,29 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 $result = $connection->query("SELECT * FROM appointments ORDER BY id");
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://www.isranews.org/images/2014/isranews/09/05092014002.jpg" width="30" height="30" alt="">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="SELECT.php">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">เพิ่มข้อมูล</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
 <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
+      <th scope="col" style="width: 100px">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
     </tr>
