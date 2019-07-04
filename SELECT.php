@@ -9,7 +9,7 @@ $result = $connection->query("SELECT * FROM tb_laws ORDER BY id");
     if($result !== null) {
         echo $result->rowCount();
     }
-    // while($row = $result->fetch()) {
-    //     echo $row["id"]. "ข้อมูล: " . $row["section"]. " " . $row["Charge"]." " . $row["Blame"]. "<br>";
-    // }
+    while($row = $result->fetch()) {
+        echo $row["id"]. "ข้อมูล: " . $row["section"]. " " . $row["Charge"]." " . $row["Blame"]. "<br>";
+    }
 ?>
