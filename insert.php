@@ -9,14 +9,14 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 $name=$_POST['sec'];
 $chge=$_POST['chge'];
 $bla=$_POST['bla'];
-    $data = [
-        'name' => '5',
-        'surname' => '44',
-        'sex' => '5',
-    ];
-    $sql = "INSERT INTO users (sec, chge, bla) VALUES (:name, :surname, :sex)";
-    $stmt = $connection->prepare($sql);
-    $stmt->execute($data);
+
+$params = array(
+    'user_id' => '4' ,
+    'slip_date' => '4',
+    'name' => '4',
+    );
+    $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
+    $statement->execute($params);
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
