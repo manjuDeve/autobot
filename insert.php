@@ -5,14 +5,10 @@ $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
 $dbname = 'd4m7b5v2sg6snc';
 $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-// $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
-  $conn = mysqli_connect($host,$dbname, $user, $pass) or die("Could not connect to host.");
-    mysqli_query("SET NAMES UTF8");
-    mysqli_query("SET character_set_results=UTF8");
-    mysqli_query("SET character_set_client=UTF8");
-    mysqli_query("SET character_set_connection=UTF8");
-    mysqli_select_db($dbname, $conn) or die("Could not find database.");
+  $conn = mysqli_connect("host=$host","dbname=$dbname", $user, $pass) or die("Could not connect to host.");
+  mysqli_select_db($dbname, $conn) or die("Could not find database.");
 
   $sec=$_GET['sec'];
   $chge=$_GET['chge'];
