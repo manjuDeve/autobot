@@ -50,6 +50,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
       <td><?php echo $row['sec']; ?></td>
       <td><?php echo $row['chge']; ?></td>
       <td><?php echo $row['bla']; ?></td>
+      <td><?php echo $row['id']; ?></td>
       <td><a href='SELECT.php?iddelete=<?php $row['id']; ?>'>ลบข้อมูล</a></td>
     </tr>
     <?php } ?>
