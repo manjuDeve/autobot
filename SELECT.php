@@ -5,11 +5,13 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
   $result = $connection->query("SELECT * FROM appointments ORDER BY id");
-  $idA=$_GET['iddelete'];
-  var_dump($idA);
- 
-  $statement = $connection->query("DELETE FROM appointments WHERE id='$idA' "); 
-  var_dump($statement);
+
+  $params = array(
+    'deleteid' => $_POST['deleteid']
+    );
+    var_dump($params);
+    $statement = $connection->prepare('INSERT INTO appointments WHERE deleteid=:deleteid');
+    $statement->execute($params);
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,7 +53,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
       <td><?php echo $row['chge']; ?></td>
       <td><?php echo $row['bla']; ?></td>
       <td><?php echo $row['id']; ?></td>
-      <td><a href='SELECT.php?iddelete=<?php $row['id']; ?>'>ลบข้อมูล</a></td>
+      <td><a href='SELECT.php?deleteid=<?php $row['id']; ?>'>ลบข้อมูล</a></td>
     </tr>
     <?php } ?>
   </tbody>
