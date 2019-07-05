@@ -9,7 +9,7 @@
     // if($_POST['deleteid']=='submit'){
       $sql = "DELETE FROM appointments WHERE id=$_POST[deleteid]";
       $connection->exec($sql);
-      var_dump($sql);
+      // var_dump($sql);
       // header("Location: SELECT.php");
     // }
   ?>
