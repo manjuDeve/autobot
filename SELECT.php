@@ -7,11 +7,14 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
   $result = $connection->query("SELECT * FROM appointments ORDER BY id");
 
   $params = array(
-    'deleteid' => '4'
+    'deleteid' => $_GET['deleteid']
     );
     var_dump($params);
-    $statement = $connection->prepare('INSERT INTO appointments WHERE id=:deleteid');
-    $statement->execute($params);
+    // $statement = $connection->prepare('INSERT INTO appointments WHERE id=:deleteid');
+    // $statement->execute($params);
+    $sql = "DELETE FROM MyGuests WHERE id=$_GET[deleteid]";
+    $connection->exec($sql);
+    var_dump($sql);
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
