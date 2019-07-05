@@ -1,12 +1,11 @@
-<?php phpinfo();?>
-<!-- 
+
 <?php
 
-// $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
-// $dbname = 'd4m7b5v2sg6snc';
-// $user = 'jkgdpocorcqmzk';
-// $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-// $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+$host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
+$dbname = 'd4m7b5v2sg6snc';
+$user = 'jkgdpocorcqmzk';
+$pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
+$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
   // $conn = mysqli_connect("host=$host","dbname=$dbname", $user, $pass) or die("Could not connect to host.");
   // mysqli_select_db($dbname, $conn) or die("Could not find database.");
@@ -19,13 +18,13 @@
   //                             VALUES ('$sec', '$chge', '$bla')";
   //   $objsave=  mysqli_query($conn,$strsave) or die("Error Query [" . $strsave . "]");
 
-// $params = array(
-//     'user_id' => $_POST['sec'],
-//     'slip_date' => $_POST['chge'],
-//     'name' => $_POST['bla']
-//     );
-//     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
-//     $statement->execute($params);
+$params = array(
+    'user_id' => $_POST['sec'],
+    'slip_date' => $_POST['chge'],
+    'name' => $_POST['bla']
+    );
+    $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
+    $statement->execute($params);
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,4 +94,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"  crossorigin="anonymous"></script>
 </body>
-</html> -->
+</html>
