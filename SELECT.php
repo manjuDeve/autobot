@@ -10,7 +10,7 @@
       $sql = "DELETE FROM appointments WHERE id=$_POST[deleteid]";
       $connection->exec($sql);
       var_dump($sql);
-      header("Location: SELECT.php");
+      // header("Location: SELECT.php");
     // }
   ?>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
@@ -55,7 +55,7 @@
         <td><?php echo $row['id']; ?></td>
         <td>
           <form action="SELECT.php" enctype="multipart/form-data" method="post">
-            <input type="text" class="form-control" id="deleteid" name="deleteid" value="<?php echo $row['id']; ?>">
+            <input type="hidden" class="form-control" id="deleteid" name="deleteid" value="<?php echo $row['id']; ?>">
             <button name="submit" type="submit" id="submit" value="submit" class="btn btn-info pull-right">ลบข้อมูล</button>
           </form> </td>
       </tr>
