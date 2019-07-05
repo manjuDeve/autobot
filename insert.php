@@ -50,8 +50,8 @@ $params = array(
 </nav>
 <br>
 <script>alert(555);</script>
-<script>alert('<?php $_POST['sec'] ?>');</script>
-<script>alert('<?php $_GET['chge'] ?>');</script>
+<script>alert('<?php $_REQUEST['sec'] ?>');</script>
+<script>alert('<?php $_REQUEST['chge'] ?>');</script>
 <form action="insert.php" enctype="multipart/form-data" method="post">
     <div class="row">
         <div class="col-md-1"></div>
