@@ -7,7 +7,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
   $result = $connection->query("SELECT * FROM appointments ORDER BY id");
 
   $params = array(
-    'deleteid' => $_POST['deleteid']
+    'deleteid' => $_GET['deleteid']
     );
     var_dump($params);
     $statement = $connection->prepare('INSERT INTO appointments WHERE deleteid=:deleteid');
