@@ -23,7 +23,7 @@ $params = array(
     'slip_date' => $_POST['chge'],
     'name' => $_POST['bla']
     );
-    var_dump($statement);
+    var_dump($params);
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
     // var_dump($statement);
@@ -51,9 +51,6 @@ $params = array(
   </div>
 </nav>
 <br>
-<!-- <script>alert(555);</script> -->
-<script>alert('<?php $_REQUEST['sec'] ?>');</script>
-<script>alert('<?php $_REQUEST['chge'] ?>');</script>
 <form action="insert.php" enctype="multipart/form-data" method="post">
     <div class="row">
         <div class="col-md-1"></div>
