@@ -7,12 +7,12 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
   $result = $connection->query("SELECT * FROM appointments ORDER BY id");
 
   $params = array(
-    'deleteid' => $_GET['deleteid']
+    'deleteid' => $_POST['deleteid']
     );
     var_dump($params);
     // $statement = $connection->prepare('INSERT INTO appointments WHERE id=:deleteid');
     // $statement->execute($params);
-    $sql = "DELETE FROM MyGuests WHERE id=$_GET[deleteid]";
+    $sql = "DELETE FROM appointments WHERE id=$_POST[deleteid]";
     $connection->exec($sql);
     var_dump($sql);
 ?>
@@ -56,7 +56,11 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
       <td><?php echo $row['chge']; ?></td>
       <td><?php echo $row['bla']; ?></td>
       <td><?php echo $row['id']; ?></td>
-      <td><a href='SELECT.php?deleteid=<?php $row['id']; ?>'>ลบข้อมูล</a></td>
+      <td>
+        <form action="SELECT.php" enctype="multipart/form-data" method="post">
+          <input type="text" class="form-control" id="deleteid" name="deleteid" value="<?php $row['id']; ?>">
+          <button name="submit" type="submit" id="submit" class="btn btn-info pull-right">ลบข้อมูล</button>
+        </form> </td>
     </tr>
     <?php } ?>
   </tbody>
