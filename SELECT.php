@@ -5,8 +5,8 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
   $result = $connection->query("SELECT * FROM appointments ORDER BY id");
-
-  $statement = $connection->query("DELETE FROM appointments WHERE id=$_GET[iddelete]");
+  $idA=$_GET['iddelete'];
+  $statement = $connection->query("DELETE FROM appointments WHERE id='$idA' ");
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
