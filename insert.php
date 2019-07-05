@@ -23,8 +23,10 @@ $params = array(
     'slip_date' => $_POST['chge'],
     'name' => $_POST['bla']
     );
+    var_dump($params);
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
+    var_dump($statement);
 ?>
 <!DOCTYPE html>
 <html>
