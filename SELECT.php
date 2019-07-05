@@ -52,7 +52,6 @@
         <td><?php echo $row['sec']; ?></td>
         <td><?php echo $row['chge']; ?></td>
         <td><?php echo $row['bla']; ?></td>
-        <td><?php echo $row['id']; ?></td>
         <td>
           <form action="SELECT.php" enctype="multipart/form-data" method="post">
             <input type="hidden" class="form-control" id="deleteid" name="deleteid" value="<?php echo $row['id']; ?>">
