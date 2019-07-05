@@ -10,7 +10,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
     'deleteid' => $_GET['deleteid']
     );
     var_dump($params);
-    $statement = $connection->prepare('INSERT INTO appointments WHERE deleteid=:deleteid');
+    $statement = $connection->prepare('INSERT INTO appointments WHERE id=:deleteid');
     $statement->execute($params);
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
