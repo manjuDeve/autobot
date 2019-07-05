@@ -7,26 +7,14 @@ $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
-  // $conn = mysqli_connect("host=$host","dbname=$dbname", $user, $pass) or die("Could not connect to host.");
-  // mysqli_select_db($dbname, $conn) or die("Could not find database.");
-
-  // $sec=$_GET['sec'];
-  // $chge=$_GET['chge'];
-  // $bla=$_GET['bla'];
-
-  // $strsave="INSERT INTO `appointments`(`sec`, `chge`, `bla`) 
-  //                             VALUES ('$sec', '$chge', '$bla')";
-  //   $objsave=  mysqli_query($conn,$strsave) or die("Error Query [" . $strsave . "]");
-
 $params = array(
     'user_id' => $_POST['sec'],
     'slip_date' => $_POST['chge'],
     'name' => $_POST['bla']
     );
-    var_dump($params);
+    // var_dump($params);
     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
     $statement->execute($params);
-    // var_dump($statement);
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +63,7 @@ $params = array(
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">บทลงโทษ</label>
-                <textarea class="form-control" id="bla" name="bla"  rows="3" placeholder="ข้อหา"></textarea>
+                <textarea class="form-control" id="bla" name="bla"  rows="3" placeholder="บทลงโทษ"></textarea>
             </div>
         </div>
     </div>
