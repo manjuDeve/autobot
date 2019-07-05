@@ -5,26 +5,26 @@ $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
 $dbname = 'd4m7b5v2sg6snc';
 $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
-// $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
+$connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
-  $conn = mysqli_connect("host=$host","dbname=$dbname", $user, $pass) or die("Could not connect to host.");
-  mysqli_select_db($dbname, $conn) or die("Could not find database.");
+  // $conn = mysqli_connect("host=$host","dbname=$dbname", $user, $pass) or die("Could not connect to host.");
+  // mysqli_select_db($dbname, $conn) or die("Could not find database.");
 
   $sec=$_GET['sec'];
   $chge=$_GET['chge'];
   $bla=$_GET['bla'];
 
-  $strsave="INSERT INTO `appointments`(`sec`, `chge`, `bla`) 
-                              VALUES ('$sec', '$chge', '$bla')";
-    $objsave=  mysqli_query($conn,$strsave) or die("Error Query [" . $strsave . "]");
+  // $strsave="INSERT INTO `appointments`(`sec`, `chge`, `bla`) 
+  //                             VALUES ('$sec', '$chge', '$bla')";
+  //   $objsave=  mysqli_query($conn,$strsave) or die("Error Query [" . $strsave . "]");
 
-// $params = array(
-//     'user_id' => $_REQUEST['sec'],
-//     'slip_date' => $_REQUEST['chge'],
-//     'name' => $_REQUEST['bla'],
-//     );
-//     $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
-//     $statement->execute($params);
+$params = array(
+    'user_id' => $_REQUEST['sec'],
+    'slip_date' => $_REQUEST['chge'],
+    'name' => $_REQUEST['bla']
+    );
+    $statement = $connection->prepare('INSERT INTO appointments (sec, chge, bla) VALUES (:user_id,:slip_date, :name)');
+    $statement->execute($params);
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,10 +49,10 @@ $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
   </div>
 </nav>
 <br>
-<form action="insert.php" enctype="multipart/form-data" method="post">
 <script>alert(555);</script>
 <script>alert('<?php $_POST['sec'] ?>');</script>
-<script>alert('<?php $_GET['id'] ?>');</script>
+<script>alert('<?php $_GET['chge'] ?>');</script>
+<form action="insert.php" enctype="multipart/form-data" method="post">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-3">
