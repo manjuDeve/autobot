@@ -1,6 +1,7 @@
+<?php phpinfo();?>
 <!-- 
 <?php
- phpinfo();
+
 // $host = 'ec2-23-21-91-183.compute-1.amazonaws.com';
 // $dbname = 'd4m7b5v2sg6snc';
 // $user = 'jkgdpocorcqmzk';
