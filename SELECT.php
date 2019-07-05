@@ -58,7 +58,7 @@ $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
       <td><?php echo $row['id']; ?></td>
       <td>
         <form action="SELECT.php" enctype="multipart/form-data" method="post">
-          <input type="text" class="form-control" id="deleteid" name="deleteid" value="<?php $row['id']; ?>">
+          <input type="text" class="form-control" id="deleteid" name="deleteid" value="<?php echo $row['id']; ?>">
           <button name="submit" type="submit" id="submit" class="btn btn-info pull-right">ลบข้อมูล</button>
         </form> </td>
     </tr>
