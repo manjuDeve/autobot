@@ -4,7 +4,10 @@ $dbname = 'd4m7b5v2sg6snc';
 $user = 'jkgdpocorcqmzk';
 $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
 $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
-$result = $connection->query("SELECT * FROM appointments ORDER BY id");
+  $result = $connection->query("SELECT * FROM appointments ORDER BY id");
+
+  $statement = $connection->query("DELETE FROM appointments WHERE id=$_GET[iddelete]");
+  header("Location: insert.php");
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,6 +34,7 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
       <th scope="col" style="width: 100px">มาตรา</th>
       <th scope="col">ข้อหา</th>
       <th scope="col">บทลงโทษ</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +48,7 @@ $result = $connection->query("SELECT * FROM appointments ORDER BY id");
       <td><?php echo $row['sec']; ?></td>
       <td><?php echo $row['chge']; ?></td>
       <td><?php echo $row['bla']; ?></td>
+      <td><a href='delete.php?iddelete=<?php $row['id']; ?>'>ลบข้อมูล</a></td>
     </tr>
     <?php } ?>
   </tbody>
