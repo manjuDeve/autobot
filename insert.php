@@ -49,7 +49,7 @@ $params = array(
   </div>
 </nav>
 <br>
-<script>alert(555);</script>
+<!-- <script>alert(555);</script> -->
 <script>alert('<?php $_REQUEST['sec'] ?>');</script>
 <script>alert('<?php $_REQUEST['chge'] ?>');</script>
 <form action="insert.php" enctype="multipart/form-data" method="post">
@@ -75,8 +75,8 @@ $params = array(
         <div class="col-md-1"></div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">ข้อหา</label>
-                <textarea class="form-control" id="chge" name="chge"  rows="3" placeholder="ข้อหา"></textarea>
+                <label for="exampleFormControlTextarea1">บทลงโทษ</label>
+                <textarea class="form-control" id="bla" name="bla"  rows="3" placeholder="ข้อหา"></textarea>
             </div>
         </div>
     </div>
