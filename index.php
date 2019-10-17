@@ -25,9 +25,16 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
-                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id ");
-                    // error_log($result);
-                    // Get replyToken
+                    
+                        $text_to_segment = trim($mssql);
+                        include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
+                        $segment = new Segment();
+                        $result = $segment->get_segment_array($text_to_segment);
+                        foreach($result as $row)
+                        {
+                            $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$row."%' OR sec LIKE '%".$row."%' ORDER BY id ");
+                        }
+
                     $replyToken = $event['replyToken'];
                     // Reply message
                     $count = 0;
