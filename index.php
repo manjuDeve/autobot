@@ -33,25 +33,25 @@ if (!is_null($events['events'])) {
                         $respMessage = "ขอบคุณ4";
                     }
                     
-                    include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
-                    $segment = new Segment();
-                    $resultdata = $segment->get_segment_array($mssql);
-                    foreach($resultdata as $rowdata){
-                        $respMessage = "ขอบคุณ1";
-                        $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$rowdata."%' OR sec LIKE '%".$rowdata."%' ORDER BY id");
-                    }
+//                     include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
+//                     $segment = new Segment();
+//                     $resultdata = $segment->get_segment_array($mssql);
+//                     foreach($resultdata as $rowdata){
+//                         $respMessage = "ขอบคุณ1";
+//                         $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$rowdata."%' OR sec LIKE '%".$rowdata."%' ORDER BY id");
+//                     }
                     
                     $replyToken = $event['replyToken'];
                     // Reply message
-                    $count = 0;
-                    while($row = $result->fetch()){
-                        $count++;
-                        $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
-                        $respMessage = "ขอบคุณ2";
-                    }
-                    if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล ขอบคุณสำหรับคำถาม";
-                    }
+//                     $count = 0;
+//                     while($row = $result->fetch()){
+//                         $count++;
+//                         $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
+//                         $respMessage = "ขอบคุณ2";
+//                     }
+//                     if($count == 0 ){
+//                         $respMessage = "ไม่พบข้อมูล ขอบคุณสำหรับคำถาม";
+//                     }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
