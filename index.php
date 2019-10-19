@@ -25,12 +25,13 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
+                    $replyToken = $event['replyToken'];
                     if($mssql != ''){
                         $respMessage = "ขอบคุณ4";
                     }else{
                         $respMessage = "ขอบคุณ5";
                     }
-                    $replyToken = $event['replyToken'];
+                    
                     // Reply message
                     
                     $httpClient = new CurlHTTPClient($channel_token);
