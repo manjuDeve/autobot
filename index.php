@@ -25,12 +25,18 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
+                    if($mssql != ''){
+                         $respMessage = $mssql;
+                         $respMessage = "ขอบคุณ5";
+                    }else{
+                        $respMessage = $mssql;
+                        $respMessage = "ขอบคุณ4";
+                    }
                     
                     include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
                     $segment = new Segment();
                     $resultdata = $segment->get_segment_array($mssql);
-                    foreach($resultdata as $rowdata)
-                    {
+                    foreach($resultdata as $rowdata){
                         $respMessage = "ขอบคุณ1";
                         $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$rowdata."%' OR sec LIKE '%".$rowdata."%' ORDER BY id");
                     }
@@ -38,7 +44,7 @@ if (!is_null($events['events'])) {
                     $replyToken = $event['replyToken'];
                     // Reply message
                     $count = 0;
-                    while($row = $result->fetch()) {
+                    while($row = $result->fetch()){
                         $count++;
                         $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
                         $respMessage = "ขอบคุณ2";
