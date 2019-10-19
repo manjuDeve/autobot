@@ -31,6 +31,7 @@ if (!is_null($events['events'])) {
                     $resultdata = $segment->get_segment_array($mssql);
                     foreach($resultdata as $rowdata)
                     {
+                        $respMessage = "ขอบคุณ1";
                         $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$rowdata."%' OR sec LIKE '%".$rowdata."%' ORDER BY id");
                     }
                     
@@ -40,6 +41,7 @@ if (!is_null($events['events'])) {
                     while($row = $result->fetch()) {
                         $count++;
                         $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
+                        $respMessage = "ขอบคุณ2";
                     }
                     if($count == 0 ){
                         $respMessage = "ไม่พบข้อมูล ขอบคุณสำหรับคำถาม";
