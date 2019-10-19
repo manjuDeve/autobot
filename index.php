@@ -27,8 +27,12 @@ if (!is_null($events['events'])) {
                     $mssql=$event['message']['text'];
                     $replyToken = $event['replyToken'];
                     if($mssql != ''){
-                        $respMessage = "ขอบคุณ7";
-                        $respMessage = "ขอบคุณ6";
+                        include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
+                        $segment = new Segment();
+                        $resultdata = $segment->get_segment_array($mssql);
+                        foreach($resultdata as $rowdata){
+                            $respMessage =$resultdata;
+                         }
                     }else{
                         $respMessage = "ขอบคุณ5";
                     }
