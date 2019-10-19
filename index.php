@@ -25,21 +25,17 @@ if (!is_null($events['events'])) {
                     $pass = 'd41b9d3145a967b438542fc48475c08338a54f13b7c762bb4a5a0cdcbc1f2637';
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
+                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id ");
                     $replyToken = $event['replyToken'];
-                    if($mssql != ''){
-                        include(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'THSplitLib/segment.php');
-                        $segment = new Segment();
-                        $resultdata = $segment->get_segment_array($mssql);
-                        foreach($resultdata as $rowdata){
-                            $respMessage =$resultdata."lll";
-                         }
-                        $respMessage = "ขอบคุณ6";
-                    }else{
-                        $respMessage = "ขอบคุณ5";
-                    }
-                    
                     // Reply message
-                    
+                     $count = 0;
+                    while($row = $result->fetch()) {
+                        $count++;
+                        $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
+                    }
+                    if($count == 0 ){
+                        $respMessage = "ไม่พบข้อมูล ขอบคุณสำหรับคำถาม";
+                    }
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
