@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
                     $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
                     $mssql=$event['message']['text'];
                     
-                     $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id");
+                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id");
                     $replyToken = $event['replyToken'];
                     // Reply message
                     $count = 0;
