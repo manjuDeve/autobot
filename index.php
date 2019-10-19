@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
                     $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id");
                     $replyToken = $event['replyToken'];
                     // Reply message
-                    $count = 0;
+                    $count = 0; 
                     while($row = $result->fetch()){
                         $count++;
                         $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
