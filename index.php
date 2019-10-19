@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
                         $segment = new Segment();
                         $resultdata = $segment->get_segment_array($mssql);
                         foreach($resultdata as $rowdata){
-                            $respMessage =$resultdata;
+                            $respMessage =$resultdata."lll";
                          }
                     }else{
                         $respMessage = "ขอบคุณ5";
