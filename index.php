@@ -30,18 +30,9 @@ if (!is_null($events['events'])) {
                     }else{
                         $respMessage = "ขอบคุณ5";
                     }
-                    $result = $connection->query("SELECT * FROM appointments WHERE chge LIKE '%".$mssql."%' OR sec LIKE '%".$mssql."%' ORDER BY id");
                     $replyToken = $event['replyToken'];
                     // Reply message
-                    $count = 0; 
-                    while($row = $result->fetch()){
-                        $count++;
-                        $respMessage .= "" . $row["sec"]."\nข้อหา". $row["chge"]."\nบทลงโทษ". $row["bla"]."\n";
-                        $respMessage = "ขอบคุณ2";
-                    }
-                    if($count == 0 ){
-                        $respMessage = "ไม่พบข้อมูล ขอบคุณสำหรับคำถาม";
-                    }
+                    
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
