@@ -28,6 +28,7 @@ if (!is_null($events['events'])) {
                     $replyToken = $event['replyToken'];
                     if($mssql != ''){
                         $respMessage = "ขอบคุณ4";
+                        $respMessage = "ขอบคุณ6";
                     }else{
                         $respMessage = "ขอบคุณ5";
                     }
