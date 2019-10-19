@@ -33,6 +33,7 @@ if (!is_null($events['events'])) {
                         foreach($resultdata as $rowdata){
                             $respMessage =$resultdata."lll";
                          }
+                        $respMessage = "ขอบคุณ6";
                     }else{
                         $respMessage = "ขอบคุณ5";
                     }
